@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// Changes to this requires running:  npx prisma generate
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat    = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+
+  currentReviews CurrentReview[]
+  reviewHistories ReviewHistory[]
+
+}
+
+model Problem {
+  number  Int @id
+  title String
+  slug  String
+  description String? @default("")
+  topics String? @default("")
+  difficulty String
+  similarProblemNumbers String? @default("")
+  similarProblemTexts String? @default("")
+
+  // Relations
+  currentReviews CurrentReview[]
+  reviewHistories ReviewHistory[]
+
+  
+}
+
+model CurrentReview {
+  userId Int
+  problemNumber Int 
+  nextReviewAt DateTime
+  stability Float
+  difficulty Float
+  elapsedDays Int
+  scheduledDays Int
+  reps Int
+  lapses Int
+  learningSteps Int
+  state Int
+  lastReview String
+
+   // Relation to Problem
+  problem      Problem @relation(fields: [problemNumber], references: [number])
+  user     User @relation(fields: [userId], references: [id])
+
+  @@id([userId, problemNumber]) // composite primary key if you want unique review per user/problem
+}
+
+model ReviewHistory {
+  id Int @id@default(autoincrement())
+  userId Int 
+  problemNumber Int
+  rating Rating
+  reviewedAt DateTime
+  comments String? @default("")
+  state Int
+  due String
+  stability Float
+  difficulty Float
+  elapsedDays Int
+  lastElapsedDays Int
+  scheduledDays Int
+  learningSteps Int
+  review String
+  problem        Problem @relation(fields: [problemNumber], references: [number])
+  user     User @relation(fields: [userId], references: [id])
+}
+
+enum Rating {
+  ONE
+  TWO
+  THREE
+  FOUR
+}
+
