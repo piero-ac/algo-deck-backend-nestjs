@@ -6,12 +6,14 @@ import { ReviewsDueDto } from 'src/dto/reviews-due.dto';
 export class ReviewsService {
   constructor(private prisma: PrismaService) {}
 
-  async getReviewsDue(): Promise<ReviewsDueDto[]> {
+  async getReviewsDue(params: { userId: number }): Promise<ReviewsDueDto[]> {
+    const { userId } = params;
     return this.prisma.currentReview.findMany({
       where: {
         nextReviewAt: {
           lte: new Date(),
         },
+        userId: userId,
       },
       orderBy: {
         nextReviewAt: 'asc',
@@ -28,9 +30,17 @@ export class ReviewsService {
     });
   }
 
-  // async getReviewDueDate(params: { problemNumber: number }) {
-  //   const { problemNumber } = params;
+  async getReviewDueDate(params: { userId: number; problemNumber: number }) {
+    const { userId, problemNumber } = params;
 
-  //   return this.prisma.currentReview({})
-  // }
+    return this.prisma.currentReview.findFirst({
+      where: {
+        problemNumber: problemNumber,
+        userId: userId,
+      },
+      select: {
+        nextReviewAt: true,
+      },
+    });
+  }
 }
