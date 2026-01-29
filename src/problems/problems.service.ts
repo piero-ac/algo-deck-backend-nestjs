@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Problem, ReviewHistory } from 'src/generated/prisma/client';
+import { Problem } from 'src/generated/prisma/client';
+import { ReviewHistoryResponseDto } from 'src/dto/review-history-response.dto';
 
 @Injectable()
 export class ProblemsService {
@@ -36,7 +37,7 @@ export class ProblemsService {
 
   async problemHistoryByNumber(params: {
     key: number;
-  }): Promise<ReviewHistory[]> {
+  }): Promise<ReviewHistoryResponseDto[]> {
     const { key } = params;
 
     return this.prisma.reviewHistory.findMany({
@@ -44,12 +45,40 @@ export class ProblemsService {
       where: {
         problemNumber: key,
       },
+      orderBy: {
+        reviewedAt: 'desc',
+      },
+      select: {
+        id: true,
+        problemNumber: true,
+        rating: true,
+        reviewedAt: true,
+        problem: {
+          select: {
+            title: true,
+          },
+        },
+      },
     });
   }
 
-  async getProblemHistoryAll(): Promise<ReviewHistory[]> {
+  async getProblemHistoryAll(): Promise<ReviewHistoryResponseDto[]> {
     return this.prisma.reviewHistory.findMany({
       take: 10,
+      orderBy: {
+        reviewedAt: 'desc',
+      },
+      select: {
+        id: true,
+        problemNumber: true,
+        rating: true,
+        reviewedAt: true,
+        problem: {
+          select: {
+            title: true,
+          },
+        },
+      },
     });
   }
 }

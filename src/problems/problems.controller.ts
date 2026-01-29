@@ -1,10 +1,8 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ProblemsService } from './problems.service';
-import {
-  Problem as ProblemModel,
-  ReviewHistory as ReviewHistoryModel,
-} from 'src/generated/prisma/client';
-import { SearchProblemsDto } from '../dto/search-problems.dot';
+import { Problem as ProblemModel } from 'src/generated/prisma/client';
+import { SearchProblemsDto } from '../dto/search-problems.dto';
+import { ReviewHistoryResponseDto } from '../dto/review-history-response.dto';
 
 @Controller('problems')
 export class ProblemsController {
@@ -25,14 +23,14 @@ export class ProblemsController {
   }
 
   @Get('history/all')
-  async getProblemHistory(): Promise<ReviewHistoryModel[]> {
+  async getProblemHistory(): Promise<ReviewHistoryResponseDto[]> {
     return this.problemsService.getProblemHistoryAll();
   }
 
   @Get('history/:key')
   async getProblemHistoryByNumber(
     @Param('key') key: string,
-  ): Promise<ReviewHistoryModel[]> {
+  ): Promise<ReviewHistoryResponseDto[]> {
     return this.problemsService.problemHistoryByNumber({
       key: Number(key),
     });
