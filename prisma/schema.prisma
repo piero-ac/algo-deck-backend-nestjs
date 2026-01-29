@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-// Changes to this requires running:  npx prisma generate
+// Changes to this requires running:  npx prisma generate npx prisma migrate dev
 
 generator client {
   provider = "prisma-client"
@@ -55,7 +55,7 @@ model CurrentReview {
   lapses Int
   learningSteps Int
   state Int
-  lastReview String
+  lastReview DateTime
 
    // Relation to Problem
   problem      Problem @relation(fields: [problemNumber], references: [number])
@@ -72,14 +72,14 @@ model ReviewHistory {
   reviewedAt DateTime
   comments String? @default("")
   state Int
-  due String
+  due DateTime
   stability Float
   difficulty Float
   elapsedDays Int
   lastElapsedDays Int
   scheduledDays Int
   learningSteps Int
-  review String
+  review DateTime
   problem        Problem @relation(fields: [problemNumber], references: [number])
   user     User @relation(fields: [userId], references: [id])
 }
