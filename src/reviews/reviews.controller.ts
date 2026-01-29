@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { ReviewsDueDto } from 'src/dto/reviews-due.dto';
 
@@ -13,5 +13,12 @@ export class ReviewsController {
     return this.reviewsService.getReviewsDue({ userId: Number(userId) });
   }
 
-  // @Put(':problemNumber')
+  // @Put('submit-review')
+  // async submitReview(
+  //   @Body() reviewData: { userId: string; problemNumber: string; rating: string},
+  // ) {
+
+  //   const {userId, problemNumber, rating} = reviewData;
+
+  // }
 }
