@@ -1,15 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-// Changes to this requires running:  npx prisma generate npx prisma migrate dev
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
-  moduleFormat    = "cjs"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
 }
 
 datasource db {
@@ -17,71 +9,63 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-
-  currentReviews CurrentReview[]
+  id              Int             @id @default(autoincrement())
+  email           String          @unique
+  name            String?
+  currentReviews  CurrentReview[]
   reviewHistories ReviewHistory[]
-
 }
 
 model Problem {
-  number  Int @id
-  title String
-  slug  String
-  description String? @default("")
-  topics String? @default("")
-  difficulty String
-  similarProblemNumbers String? @default("")
-  similarProblemTexts String? @default("")
-
-  // Relations
-  currentReviews CurrentReview[]
-  reviewHistories ReviewHistory[]
-
-  
+  number                Int             @id
+  title                 String
+  slug                  String
+  description           String?         @default("")
+  topics                String?         @default("")
+  difficulty            String
+  similarProblemNumbers String?         @default("")
+  similarProblemTexts   String?         @default("")
+  currentReviews        CurrentReview[]
+  reviewHistories       ReviewHistory[]
 }
 
 model CurrentReview {
-  userId Int
-  problemNumber Int 
-  nextReviewAt DateTime
-  stability Float
-  difficulty Float
-  elapsedDays Int
+  userId        Int
+  problemNumber Int
+  nextReviewAt  DateTime
+  stability     Float
+  difficulty    Float
+  elapsedDays   Int
   scheduledDays Int
-  reps Int
-  lapses Int
+  reps          Int
+  lapses        Int
   learningSteps Int
-  state Int
-  lastReview DateTime
+  state         Int
+  lastReview    DateTime
+  problem       Problem  @relation(fields: [problemNumber], references: [number])
+  user          User     @relation(fields: [userId], references: [id])
 
-   // Relation to Problem
-  problem      Problem @relation(fields: [problemNumber], references: [number])
-  user     User @relation(fields: [userId], references: [id])
-
-  @@id([userId, problemNumber]) // composite primary key if you want unique review per user/problem
+  @@id([userId, problemNumber])
 }
 
 model ReviewHistory {
-  id Int @id@default(autoincrement())
-  userId Int 
-  problemNumber Int
-  rating Rating
-  reviewedAt DateTime
-  comments String? @default("")
-  state Int
-  due DateTime
-  stability Float
-  difficulty Float
-  elapsedDays Int
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  problemNumber   Int
+  rating          Rating
+  reviewedAt      DateTime
+  comments        String?  @default("")
+  state           Int
+  stability       Float
+  difficulty      Float
+  elapsedDays     Int
   lastElapsedDays Int
-  scheduledDays Int
-  learningSteps Int
-  review DateTime
-  problem        Problem @relation(fields: [problemNumber], references: [number])
-  user     User @relation(fields: [userId], references: [id])
+  scheduledDays   Int
+  learningSteps   Int
+  due             DateTime
+  review          DateTime
+  problem         Problem  @relation(fields: [problemNumber], references: [number])
+  user            User     @relation(fields: [userId], references: [id])
 }
 
 enum Rating {
@@ -90,4 +74,3 @@ enum Rating {
   THREE
   FOUR
 }
-
