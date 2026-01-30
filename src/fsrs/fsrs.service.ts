@@ -35,7 +35,7 @@ export class FsrsService {
       lapses: data.lapses,
       learning_steps: data.learningSteps,
       state: data.state,
-      last_review: data.lastReview,
+      last_review: data.lastReview ?? new Date(),
     };
   }
 
@@ -70,7 +70,7 @@ export class FsrsService {
       reps: card.reps,
       lapses: card.lapses,
       state: card.state,
-      lastReview: card.last_review || new Date(),
+      lastReview: card.last_review ?? new Date(),
     };
   }
   // Convert Card to Row Data for
@@ -142,7 +142,7 @@ export class FsrsService {
       case 4:
         return FsrsRating.Easy;
       default:
-        return FsrsRating.Again;
+        return FsrsRating.Manual; // use Manual to Determine error
     }
   }
 }
