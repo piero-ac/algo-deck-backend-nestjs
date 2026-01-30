@@ -13,12 +13,23 @@ export class ReviewsController {
     return this.reviewsService.getReviewsDue({ userId: Number(userId) });
   }
 
-  // @Put('submit-review')
-  // async submitReview(
-  //   @Body() reviewData: { userId: string; problemNumber: string; rating: string},
-  // ) {
+  @Put('submit-review')
+  async submitReview(
+    @Body()
+    reviewData: {
+      userId: string;
+      problemNumber: string;
+      rating: string;
+    },
+  ) {
+    const { userId, problemNumber, rating } = reviewData;
 
-  //   const {userId, problemNumber, rating} = reviewData;
+    const cardData = this.reviewsService.submitReview({
+      userId: Number(userId),
+      problemNumber: Number(problemNumber),
+      rating: Number(rating),
+    });
 
-  // }
+    return cardData;
+  }
 }
