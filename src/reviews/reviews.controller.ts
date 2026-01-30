@@ -13,6 +13,11 @@ export class ReviewsController {
     return this.reviewsService.getReviewsDue({ userId: Number(userId) });
   }
 
+  @Get('count/:userId')
+  async getReviewCount(@Param('userId') userId: string): Promise<number> {
+    return this.reviewsService.getReviewsDueCount({ userId: Number(userId) });
+  }
+
   @Put('submit-review')
   async submitReview(
     @Body()
