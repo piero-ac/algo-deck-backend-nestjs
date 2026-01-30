@@ -9,5 +9,5 @@ export class ReviewCardDto {
   lapses: number;
   learningSteps: number;
   state: number;
-  lastReview: Date | undefined;
+  lastReview: Date;
 }

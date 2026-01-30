@@ -10,5 +10,5 @@ export class CurrentReviewDto {
   lapses: number;
   learningSteps: number;
   state: number;
-  lastReview: Date | undefined;
+  lastReview: Date;
 }
