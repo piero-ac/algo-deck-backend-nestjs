@@ -7,10 +7,17 @@ import { ProblemsController } from './problems/problems.controller';
 import { PrismaService } from './prisma/prisma.service';
 import { ReviewsController } from './reviews/reviews.controller';
 import { ReviewsService } from './reviews/reviews.service';
+import { FsrsService } from './fsrs/fsrs.service';
 
 @Module({
   imports: [ConfigModule.forRoot()],
   controllers: [AppController, ProblemsController, ReviewsController],
-  providers: [AppService, ProblemsService, PrismaService, ReviewsService],
+  providers: [
+    AppService,
+    ProblemsService,
+    PrismaService,
+    ReviewsService,
+    FsrsService,
+  ],
 })
 export class AppModule {}
