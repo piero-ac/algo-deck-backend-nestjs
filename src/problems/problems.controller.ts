@@ -22,9 +22,11 @@ export class ProblemsController {
     });
   }
 
-  @Get('history/all')
-  async getProblemHistory(): Promise<ReviewHistoryResponseDto[]> {
-    return this.problemsService.getProblemHistoryAll();
+  @Get('history/all/:userId')
+  async getProblemHistory(
+    @Param('userId') userId: string,
+  ): Promise<ReviewHistoryResponseDto[]> {
+    return this.problemsService.getProblemHistoryAll(Number(userId));
   }
 
   @Get('history/:key')

@@ -66,9 +66,14 @@ export class ProblemsService {
     });
   }
 
-  async getProblemHistoryAll(): Promise<ReviewHistoryResponseDto[]> {
+  async getProblemHistoryAll(
+    userId: number,
+  ): Promise<ReviewHistoryResponseDto[]> {
     return this.prisma.reviewHistory.findMany({
       take: 10,
+      where: {
+        userId: userId,
+      },
       orderBy: {
         reviewedAt: 'desc',
       },
