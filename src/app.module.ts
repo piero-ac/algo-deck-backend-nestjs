@@ -8,6 +8,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { ReviewsController } from './reviews/reviews.controller';
 import { ReviewsService } from './reviews/reviews.service';
 import { FsrsService } from './fsrs/fsrs.service';
+import { ReviewStatsService } from './reviews/review-stats.service';
 
 @Module({
   imports: [ConfigModule.forRoot()],
@@ -18,6 +19,7 @@ import { FsrsService } from './fsrs/fsrs.service';
     PrismaService,
     ReviewsService,
     FsrsService,
+    ReviewStatsService,
   ],
 })
 export class AppModule {}

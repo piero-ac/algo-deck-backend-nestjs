@@ -7,6 +7,10 @@ import { ReviewHistoryResponseDto } from 'src/dto/review-history-response.dto';
 export class ProblemsService {
   constructor(private prisma: PrismaService) {}
 
+  async getProblemsCount(): Promise<number> {
+    return this.prisma.problem.count();
+  }
+
   async problemsBySearch(params: {
     search: string;
     skip: number;
