@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Problem } from 'src/generated/prisma/client';
+// import { Problem } from 'src/generated/prisma/client';
 import { ReviewHistoryResponseDto } from 'src/dto/review-history-response.dto';
 
 @Injectable()
@@ -15,28 +15,54 @@ export class ProblemsService {
     search: string;
     skip: number;
     take: number;
-  }): Promise<Problem[]> {
+  }): Promise<ProblemsBySearchResponse> {
     const { search, skip, take } = params;
-    return this.prisma.problem.findMany({
-      take,
-      skip,
-      where: {
-        OR: [
-          {
-            title: {
-              contains: search,
-              mode: 'insensitive',
+    const [problems, total] = await this.prisma.$transaction([
+      this.prisma.problem.findMany({
+        take,
+        skip,
+        select: {
+          number: true,
+          title: true,
+          difficulty: true,
+        },
+        where: {
+          OR: [
+            {
+              title: {
+                contains: search,
+                mode: 'insensitive',
+              },
             },
-          },
-          {
-            slug: {
-              contains: search,
-              mode: 'insensitive',
+            {
+              slug: {
+                contains: search,
+                mode: 'insensitive',
+              },
             },
-          },
-        ],
-      },
-    });
+          ],
+        },
+      }),
+      this.prisma.problem.count({
+        where: {
+          OR: [
+            {
+              title: {
+                contains: search,
+                mode: 'insensitive',
+              },
+            },
+            {
+              slug: {
+                contains: search,
+                mode: 'insensitive',
+              },
+            },
+          ],
+        },
+      }),
+    ]);
+    return { problems, total };
   }
 
   async problemHistoryByNumber(params: {
@@ -91,3 +117,14 @@ export class ProblemsService {
     });
   }
 }
+
+export type ProblemSearchResult = {
+  number: number;
+  title: string;
+  difficulty: string;
+};
+
+export type ProblemsBySearchResponse = {
+  problems: ProblemSearchResult[];
+  total: number;
+};
