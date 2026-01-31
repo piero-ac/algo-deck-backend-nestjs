@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from 'src/generated/prisma/client';
 // import { Problem } from 'src/generated/prisma/client';
 import { ReviewHistoryResponseDto } from 'src/dto/review-history-response.dto';
 
@@ -15,8 +16,37 @@ export class ProblemsService {
     search: string;
     skip: number;
     take: number;
+    userId: number;
   }): Promise<ProblemsBySearchResponse> {
-    const { search, skip, take } = params;
+    const { search, skip, take, userId } = params;
+    const whereClause: Prisma.ProblemWhereInput = {
+      AND: [
+        {
+          OR: [
+            {
+              title: {
+                contains: search,
+                mode: Prisma.QueryMode.insensitive,
+              },
+            },
+            {
+              slug: {
+                contains: search,
+                mode: Prisma.QueryMode.insensitive,
+              },
+            },
+          ],
+        },
+        {
+          reviewHistories: {
+            none: {
+              userId,
+            },
+          },
+        },
+      ],
+    };
+
     const [problems, total] = await this.prisma.$transaction([
       this.prisma.problem.findMany({
         take,
@@ -26,42 +56,13 @@ export class ProblemsService {
           title: true,
           difficulty: true,
         },
-        where: {
-          OR: [
-            {
-              title: {
-                contains: search,
-                mode: 'insensitive',
-              },
-            },
-            {
-              slug: {
-                contains: search,
-                mode: 'insensitive',
-              },
-            },
-          ],
-        },
+        where: whereClause,
       }),
       this.prisma.problem.count({
-        where: {
-          OR: [
-            {
-              title: {
-                contains: search,
-                mode: 'insensitive',
-              },
-            },
-            {
-              slug: {
-                contains: search,
-                mode: 'insensitive',
-              },
-            },
-          ],
-        },
+        where: whereClause,
       }),
     ]);
+
     return { problems, total };
   }
 
