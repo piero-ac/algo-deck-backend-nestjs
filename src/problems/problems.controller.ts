@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ProblemsService } from './problems.service';
-import { Problem as ProblemModel } from 'src/generated/prisma/client';
 import { SearchProblemsDto } from '../dto/search-problems.dto';
 import { ReviewHistoryResponseDto } from '../dto/review-history-response.dto';
+import { SearchProblemsResponseDto } from 'src/dto/search-problems-response.dto';
 
 @Controller('problems')
 export class ProblemsController {
@@ -11,15 +11,23 @@ export class ProblemsController {
   @Get()
   async getProblemsList(
     @Query() query: SearchProblemsDto,
-  ): Promise<ProblemModel[]> {
+  ): Promise<SearchProblemsResponseDto> {
     const { search, page, limit } = query;
     const skip = (page - 1) * limit;
 
-    return this.problemsService.problemsBySearch({
+    const { problems, total } = await this.problemsService.problemsBySearch({
       search,
       skip,
       take: limit,
     });
+
+    return {
+      problems,
+      total,
+      page,
+      pageSize: limit,
+      totalPages: Math.ceil(total / limit),
+    };
   }
 
   @Get('history/all/:userId')
