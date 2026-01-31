@@ -12,13 +12,14 @@ export class ProblemsController {
   async getProblemsList(
     @Query() query: SearchProblemsDto,
   ): Promise<SearchProblemsResponseDto> {
-    const { search, page, limit } = query;
+    const { search, page, limit, userId } = query;
     const skip = (page - 1) * limit;
 
     const { problems, total } = await this.problemsService.problemsBySearch({
       search,
       skip,
       take: limit,
+      userId,
     });
 
     return {

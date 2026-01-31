@@ -15,4 +15,8 @@ export class SearchProblemsDto {
   @IsInt()
   @Min(1)
   limit: number = 20;
+
+  @Type(() => Number)
+  @IsInt()
+  userId: number;
 }
