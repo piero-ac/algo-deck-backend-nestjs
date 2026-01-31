@@ -1,14 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ReviewsDueDto } from 'src/dto/reviews-due.dto';
-// import { Rating } from 'src/generated/prisma/enums';
 import { FsrsService } from 'src/fsrs/fsrs.service';
 import { Card, Rating as FsrsRating } from 'ts-fsrs';
-import {
-  BadRequestException,
-  NotFoundException,
-  ConflictException,
-} from '@nestjs/common';
+import { BadRequestException, ConflictException } from '@nestjs/common';
 
 @Injectable()
 export class ReviewsService {
@@ -81,12 +76,8 @@ export class ReviewsService {
       throw new BadRequestException('INVALID_RATING');
     }
 
-    if (!result) {
-      throw new NotFoundException('NO_REVIEW_HISTORY');
-    }
-
     const now = new Date();
-    if (result.nextReviewAt > now) {
+    if (result && result.nextReviewAt > now) {
       throw new ConflictException('REVIEW_NOT_DUE');
     }
 
