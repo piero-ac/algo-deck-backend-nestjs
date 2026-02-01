@@ -10,10 +10,10 @@
 */
 
 export const Rating = {
-  ONE: 'ONE',
-  TWO: 'TWO',
-  THREE: 'THREE',
-  FOUR: 'FOUR'
+  AGAIN: 'AGAIN',
+  HARD: 'HARD',
+  GOOD: 'GOOD',
+  EASY: 'EASY'
 } as const
 
 export type Rating = (typeof Rating)[keyof typeof Rating]

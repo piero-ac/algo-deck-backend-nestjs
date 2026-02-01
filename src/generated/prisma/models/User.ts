@@ -38,18 +38,24 @@ export type UserMinAggregateOutputType = {
   id: number | null
   email: string | null
   name: string | null
+  clerkUserId: string | null
+  createdAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: number | null
   email: string | null
   name: string | null
+  clerkUserId: string | null
+  createdAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
   email: number
   name: number
+  clerkUserId: number
+  createdAt: number
   _all: number
 }
 
@@ -66,18 +72,24 @@ export type UserMinAggregateInputType = {
   id?: true
   email?: true
   name?: true
+  clerkUserId?: true
+  createdAt?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
   email?: true
   name?: true
+  clerkUserId?: true
+  createdAt?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
   email?: true
   name?: true
+  clerkUserId?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -171,6 +183,8 @@ export type UserGroupByOutputType = {
   id: number
   email: string
   name: string | null
+  clerkUserId: string
+  createdAt: Date
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -200,6 +214,8 @@ export type UserWhereInput = {
   id?: Prisma.IntFilter<"User"> | number
   email?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringNullableFilter<"User"> | string | null
+  clerkUserId?: Prisma.StringFilter<"User"> | string
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   currentReviews?: Prisma.CurrentReviewListRelationFilter
   reviewHistories?: Prisma.ReviewHistoryListRelationFilter
 }
@@ -208,6 +224,8 @@ export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
+  clerkUserId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   currentReviews?: Prisma.CurrentReviewOrderByRelationAggregateInput
   reviewHistories?: Prisma.ReviewHistoryOrderByRelationAggregateInput
 }
@@ -215,18 +233,22 @@ export type UserOrderByWithRelationInput = {
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   email?: string
+  clerkUserId?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringNullableFilter<"User"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   currentReviews?: Prisma.CurrentReviewListRelationFilter
   reviewHistories?: Prisma.ReviewHistoryListRelationFilter
-}, "id" | "email">
+}, "id" | "email" | "clerkUserId">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
+  clerkUserId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -241,11 +263,15 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  clerkUserId?: Prisma.StringWithAggregatesFilter<"User"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   currentReviews?: Prisma.CurrentReviewCreateNestedManyWithoutUserInput
   reviewHistories?: Prisma.ReviewHistoryCreateNestedManyWithoutUserInput
 }
@@ -254,6 +280,8 @@ export type UserUncheckedCreateInput = {
   id?: number
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   currentReviews?: Prisma.CurrentReviewUncheckedCreateNestedManyWithoutUserInput
   reviewHistories?: Prisma.ReviewHistoryUncheckedCreateNestedManyWithoutUserInput
 }
@@ -261,6 +289,8 @@ export type UserUncheckedCreateInput = {
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   currentReviews?: Prisma.CurrentReviewUpdateManyWithoutUserNestedInput
   reviewHistories?: Prisma.ReviewHistoryUpdateManyWithoutUserNestedInput
 }
@@ -269,6 +299,8 @@ export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   currentReviews?: Prisma.CurrentReviewUncheckedUpdateManyWithoutUserNestedInput
   reviewHistories?: Prisma.ReviewHistoryUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -277,23 +309,31 @@ export type UserCreateManyInput = {
   id?: number
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  clerkUserId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -304,12 +344,16 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  clerkUserId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  clerkUserId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -327,6 +371,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -368,6 +416,8 @@ export type UserUpdateOneRequiredWithoutReviewHistoriesNestedInput = {
 export type UserCreateWithoutCurrentReviewsInput = {
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   reviewHistories?: Prisma.ReviewHistoryCreateNestedManyWithoutUserInput
 }
 
@@ -375,6 +425,8 @@ export type UserUncheckedCreateWithoutCurrentReviewsInput = {
   id?: number
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   reviewHistories?: Prisma.ReviewHistoryUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -397,6 +449,8 @@ export type UserUpdateToOneWithWhereWithoutCurrentReviewsInput = {
 export type UserUpdateWithoutCurrentReviewsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reviewHistories?: Prisma.ReviewHistoryUpdateManyWithoutUserNestedInput
 }
 
@@ -404,12 +458,16 @@ export type UserUncheckedUpdateWithoutCurrentReviewsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reviewHistories?: Prisma.ReviewHistoryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewHistoriesInput = {
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   currentReviews?: Prisma.CurrentReviewCreateNestedManyWithoutUserInput
 }
 
@@ -417,6 +475,8 @@ export type UserUncheckedCreateWithoutReviewHistoriesInput = {
   id?: number
   email: string
   name?: string | null
+  clerkUserId: string
+  createdAt?: Date | string
   currentReviews?: Prisma.CurrentReviewUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -439,6 +499,8 @@ export type UserUpdateToOneWithWhereWithoutReviewHistoriesInput = {
 export type UserUpdateWithoutReviewHistoriesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   currentReviews?: Prisma.CurrentReviewUpdateManyWithoutUserNestedInput
 }
 
@@ -446,6 +508,8 @@ export type UserUncheckedUpdateWithoutReviewHistoriesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clerkUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   currentReviews?: Prisma.CurrentReviewUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -493,6 +557,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   email?: boolean
   name?: boolean
+  clerkUserId?: boolean
+  createdAt?: boolean
   currentReviews?: boolean | Prisma.User$currentReviewsArgs<ExtArgs>
   reviewHistories?: boolean | Prisma.User$reviewHistoriesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -502,21 +568,27 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   email?: boolean
   name?: boolean
+  clerkUserId?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
   name?: boolean
+  clerkUserId?: boolean
+  createdAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
   email?: boolean
   name?: boolean
+  clerkUserId?: boolean
+  createdAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "clerkUserId" | "createdAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   currentReviews?: boolean | Prisma.User$currentReviewsArgs<ExtArgs>
   reviewHistories?: boolean | Prisma.User$reviewHistoriesArgs<ExtArgs>
@@ -535,6 +607,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: number
     email: string
     name: string | null
+    clerkUserId: string
+    createdAt: Date
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -963,6 +1037,8 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'Int'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
+  readonly clerkUserId: Prisma.FieldRef<"User", 'String'>
+  readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 

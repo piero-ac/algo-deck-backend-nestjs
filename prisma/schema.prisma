@@ -12,8 +12,11 @@ model User {
   id              Int             @id @default(autoincrement())
   email           String          @unique
   name            String?
+  clerkUserId         String          @unique
+  createdAt DateTime @default(now())
   currentReviews  CurrentReview[]
   reviewHistories ReviewHistory[]
+  
 }
 
 model Problem {
@@ -32,45 +35,60 @@ model Problem {
 model CurrentReview {
   userId        Int
   problemNumber Int
-  nextReviewAt  DateTime
-  stability     Float
+
+  // FSRS fields
   difficulty    Float
+  due           DateTime
   elapsedDays   Int
-  scheduledDays Int
-  reps          Int
   lapses        Int
+  lastReview    DateTime?
   learningSteps Int
+  reps          Int
+  scheduledDays Int
+  stability     Float
   state         Int
-  lastReview    DateTime
+  
   problem       Problem  @relation(fields: [problemNumber], references: [number])
   user          User     @relation(fields: [userId], references: [id])
 
   @@id([userId, problemNumber])
+  @@index([userId])
+  @@index([problemNumber])
 }
 
 model ReviewHistory {
   id              Int      @id @default(autoincrement())
+
   userId          Int
   problemNumber   Int
+
   rating          Rating
   reviewedAt      DateTime
   comments        String?  @default("")
-  state           Int
-  stability       Float
-  difficulty      Float
-  elapsedDays     Int
-  lastElapsedDays Int
-  scheduledDays   Int
-  learningSteps   Int
-  due             DateTime
-  review          DateTime
+
+  // Same FSRS fields as CurrentReview
+  difficulty    Float
+  due           DateTime
+  elapsedDays   Int
+  lapses        Int
+  lastReview    DateTime?
+  learningSteps Int
+  reps          Int
+  scheduledDays Int
+  stability     Float
+  state         Int
+
   problem         Problem  @relation(fields: [problemNumber], references: [number])
   user            User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([problemNumber])
+  @@index([reviewedAt])
 }
 
 enum Rating {
-  ONE
-  TWO
-  THREE
-  FOUR
+  AGAIN   //1
+  HARD    // 2
+  GOOD    // 3
+  EASY    // 4
 }

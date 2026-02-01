@@ -29,72 +29,72 @@ export type AggregateCurrentReview = {
 export type CurrentReviewAvgAggregateOutputType = {
   userId: number | null
   problemNumber: number | null
-  stability: number | null
   difficulty: number | null
   elapsedDays: number | null
-  scheduledDays: number | null
-  reps: number | null
   lapses: number | null
   learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
   state: number | null
 }
 
 export type CurrentReviewSumAggregateOutputType = {
   userId: number | null
   problemNumber: number | null
-  stability: number | null
   difficulty: number | null
   elapsedDays: number | null
-  scheduledDays: number | null
-  reps: number | null
   lapses: number | null
   learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
   state: number | null
 }
 
 export type CurrentReviewMinAggregateOutputType = {
   userId: number | null
   problemNumber: number | null
-  nextReviewAt: Date | null
-  stability: number | null
   difficulty: number | null
+  due: Date | null
   elapsedDays: number | null
-  scheduledDays: number | null
-  reps: number | null
   lapses: number | null
-  learningSteps: number | null
-  state: number | null
   lastReview: Date | null
+  learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type CurrentReviewMaxAggregateOutputType = {
   userId: number | null
   problemNumber: number | null
-  nextReviewAt: Date | null
-  stability: number | null
   difficulty: number | null
+  due: Date | null
   elapsedDays: number | null
-  scheduledDays: number | null
-  reps: number | null
   lapses: number | null
-  learningSteps: number | null
-  state: number | null
   lastReview: Date | null
+  learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type CurrentReviewCountAggregateOutputType = {
   userId: number
   problemNumber: number
-  nextReviewAt: number
-  stability: number
   difficulty: number
+  due: number
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
-  learningSteps: number
-  state: number
   lastReview: number
+  learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   _all: number
 }
 
@@ -102,72 +102,72 @@ export type CurrentReviewCountAggregateOutputType = {
 export type CurrentReviewAvgAggregateInputType = {
   userId?: true
   problemNumber?: true
-  stability?: true
   difficulty?: true
   elapsedDays?: true
-  scheduledDays?: true
-  reps?: true
   lapses?: true
   learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
   state?: true
 }
 
 export type CurrentReviewSumAggregateInputType = {
   userId?: true
   problemNumber?: true
-  stability?: true
   difficulty?: true
   elapsedDays?: true
-  scheduledDays?: true
-  reps?: true
   lapses?: true
   learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
   state?: true
 }
 
 export type CurrentReviewMinAggregateInputType = {
   userId?: true
   problemNumber?: true
-  nextReviewAt?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  scheduledDays?: true
-  reps?: true
   lapses?: true
-  learningSteps?: true
-  state?: true
   lastReview?: true
+  learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type CurrentReviewMaxAggregateInputType = {
   userId?: true
   problemNumber?: true
-  nextReviewAt?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  scheduledDays?: true
-  reps?: true
   lapses?: true
-  learningSteps?: true
-  state?: true
   lastReview?: true
+  learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type CurrentReviewCountAggregateInputType = {
   userId?: true
   problemNumber?: true
-  nextReviewAt?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  scheduledDays?: true
-  reps?: true
   lapses?: true
-  learningSteps?: true
-  state?: true
   lastReview?: true
+  learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
   _all?: true
 }
 
@@ -260,16 +260,16 @@ export type CurrentReviewGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 export type CurrentReviewGroupByOutputType = {
   userId: number
   problemNumber: number
-  nextReviewAt: Date
-  stability: number
   difficulty: number
+  due: Date
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview: Date | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date
   _count: CurrentReviewCountAggregateOutputType | null
   _avg: CurrentReviewAvgAggregateOutputType | null
   _sum: CurrentReviewSumAggregateOutputType | null
@@ -298,16 +298,16 @@ export type CurrentReviewWhereInput = {
   NOT?: Prisma.CurrentReviewWhereInput | Prisma.CurrentReviewWhereInput[]
   userId?: Prisma.IntFilter<"CurrentReview"> | number
   problemNumber?: Prisma.IntFilter<"CurrentReview"> | number
-  nextReviewAt?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
-  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   difficulty?: Prisma.FloatFilter<"CurrentReview"> | number
+  due?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
   elapsedDays?: Prisma.IntFilter<"CurrentReview"> | number
-  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
-  reps?: Prisma.IntFilter<"CurrentReview"> | number
   lapses?: Prisma.IntFilter<"CurrentReview"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"CurrentReview"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"CurrentReview"> | number
+  reps?: Prisma.IntFilter<"CurrentReview"> | number
+  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
+  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   state?: Prisma.IntFilter<"CurrentReview"> | number
-  lastReview?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
   problem?: Prisma.XOR<Prisma.ProblemScalarRelationFilter, Prisma.ProblemWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -315,16 +315,16 @@ export type CurrentReviewWhereInput = {
 export type CurrentReviewOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  nextReviewAt?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrderInput | Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  lastReview?: Prisma.SortOrder
   problem?: Prisma.ProblemOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -336,16 +336,16 @@ export type CurrentReviewWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CurrentReviewWhereInput | Prisma.CurrentReviewWhereInput[]
   userId?: Prisma.IntFilter<"CurrentReview"> | number
   problemNumber?: Prisma.IntFilter<"CurrentReview"> | number
-  nextReviewAt?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
-  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   difficulty?: Prisma.FloatFilter<"CurrentReview"> | number
+  due?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
   elapsedDays?: Prisma.IntFilter<"CurrentReview"> | number
-  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
-  reps?: Prisma.IntFilter<"CurrentReview"> | number
   lapses?: Prisma.IntFilter<"CurrentReview"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"CurrentReview"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"CurrentReview"> | number
+  reps?: Prisma.IntFilter<"CurrentReview"> | number
+  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
+  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   state?: Prisma.IntFilter<"CurrentReview"> | number
-  lastReview?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
   problem?: Prisma.XOR<Prisma.ProblemScalarRelationFilter, Prisma.ProblemWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "userId_problemNumber">
@@ -353,16 +353,16 @@ export type CurrentReviewWhereUniqueInput = Prisma.AtLeast<{
 export type CurrentReviewOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  nextReviewAt?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrderInput | Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  lastReview?: Prisma.SortOrder
   _count?: Prisma.CurrentReviewCountOrderByAggregateInput
   _avg?: Prisma.CurrentReviewAvgOrderByAggregateInput
   _max?: Prisma.CurrentReviewMaxOrderByAggregateInput
@@ -376,29 +376,29 @@ export type CurrentReviewScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CurrentReviewScalarWhereWithAggregatesInput | Prisma.CurrentReviewScalarWhereWithAggregatesInput[]
   userId?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
   problemNumber?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
-  nextReviewAt?: Prisma.DateTimeWithAggregatesFilter<"CurrentReview"> | Date | string
-  stability?: Prisma.FloatWithAggregatesFilter<"CurrentReview"> | number
   difficulty?: Prisma.FloatWithAggregatesFilter<"CurrentReview"> | number
+  due?: Prisma.DateTimeWithAggregatesFilter<"CurrentReview"> | Date | string
   elapsedDays?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
-  scheduledDays?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
-  reps?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
   lapses?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
+  lastReview?: Prisma.DateTimeNullableWithAggregatesFilter<"CurrentReview"> | Date | string | null
   learningSteps?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
+  reps?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
+  scheduledDays?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
+  stability?: Prisma.FloatWithAggregatesFilter<"CurrentReview"> | number
   state?: Prisma.IntWithAggregatesFilter<"CurrentReview"> | number
-  lastReview?: Prisma.DateTimeWithAggregatesFilter<"CurrentReview"> | Date | string
 }
 
 export type CurrentReviewCreateInput = {
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
   problem: Prisma.ProblemCreateNestedOneWithoutCurrentReviewsInput
   user: Prisma.UserCreateNestedOneWithoutCurrentReviewsInput
 }
@@ -406,29 +406,29 @@ export type CurrentReviewCreateInput = {
 export type CurrentReviewUncheckedCreateInput = {
   userId: number
   problemNumber: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewUpdateInput = {
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   problem?: Prisma.ProblemUpdateOneRequiredWithoutCurrentReviewsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutCurrentReviewsNestedInput
 }
@@ -436,59 +436,59 @@ export type CurrentReviewUpdateInput = {
 export type CurrentReviewUncheckedUpdateInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   problemNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewCreateManyInput = {
   userId: number
   problemNumber: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewUpdateManyMutationInput = {
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewUncheckedUpdateManyInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   problemNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewListRelationFilter = {
@@ -509,71 +509,71 @@ export type CurrentReviewUserIdProblemNumberCompoundUniqueInput = {
 export type CurrentReviewCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  nextReviewAt?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
-  learningSteps?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   lastReview?: Prisma.SortOrder
+  learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type CurrentReviewAvgOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
   state?: Prisma.SortOrder
 }
 
 export type CurrentReviewMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  nextReviewAt?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
-  learningSteps?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   lastReview?: Prisma.SortOrder
+  learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type CurrentReviewMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  nextReviewAt?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
-  learningSteps?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   lastReview?: Prisma.SortOrder
+  learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type CurrentReviewSumOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
-  reps?: Prisma.SortOrder
   lapses?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
   state?: Prisma.SortOrder
 }
 
@@ -661,10 +661,6 @@ export type CurrentReviewUncheckedUpdateManyWithoutProblemNestedInput = {
   deleteMany?: Prisma.CurrentReviewScalarWhereInput | Prisma.CurrentReviewScalarWhereInput[]
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -673,32 +669,36 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type CurrentReviewCreateWithoutUserInput = {
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
   problem: Prisma.ProblemCreateNestedOneWithoutCurrentReviewsInput
 }
 
 export type CurrentReviewUncheckedCreateWithoutUserInput = {
   problemNumber: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewCreateOrConnectWithoutUserInput = {
@@ -733,44 +733,44 @@ export type CurrentReviewScalarWhereInput = {
   NOT?: Prisma.CurrentReviewScalarWhereInput | Prisma.CurrentReviewScalarWhereInput[]
   userId?: Prisma.IntFilter<"CurrentReview"> | number
   problemNumber?: Prisma.IntFilter<"CurrentReview"> | number
-  nextReviewAt?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
-  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   difficulty?: Prisma.FloatFilter<"CurrentReview"> | number
+  due?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
   elapsedDays?: Prisma.IntFilter<"CurrentReview"> | number
-  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
-  reps?: Prisma.IntFilter<"CurrentReview"> | number
   lapses?: Prisma.IntFilter<"CurrentReview"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"CurrentReview"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"CurrentReview"> | number
+  reps?: Prisma.IntFilter<"CurrentReview"> | number
+  scheduledDays?: Prisma.IntFilter<"CurrentReview"> | number
+  stability?: Prisma.FloatFilter<"CurrentReview"> | number
   state?: Prisma.IntFilter<"CurrentReview"> | number
-  lastReview?: Prisma.DateTimeFilter<"CurrentReview"> | Date | string
 }
 
 export type CurrentReviewCreateWithoutProblemInput = {
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
   user: Prisma.UserCreateNestedOneWithoutCurrentReviewsInput
 }
 
 export type CurrentReviewUncheckedCreateWithoutProblemInput = {
   userId: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewCreateOrConnectWithoutProblemInput = {
@@ -801,114 +801,114 @@ export type CurrentReviewUpdateManyWithWhereWithoutProblemInput = {
 
 export type CurrentReviewCreateManyUserInput = {
   problemNumber: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewUpdateWithoutUserInput = {
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   problem?: Prisma.ProblemUpdateOneRequiredWithoutCurrentReviewsNestedInput
 }
 
 export type CurrentReviewUncheckedUpdateWithoutUserInput = {
   problemNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewUncheckedUpdateManyWithoutUserInput = {
   problemNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewCreateManyProblemInput = {
   userId: number
-  nextReviewAt: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  scheduledDays: number
-  reps: number
   lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
+  reps: number
+  scheduledDays: number
+  stability: number
   state: number
-  lastReview: Date | string
 }
 
 export type CurrentReviewUpdateWithoutProblemInput = {
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCurrentReviewsNestedInput
 }
 
 export type CurrentReviewUncheckedUpdateWithoutProblemInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CurrentReviewUncheckedUpdateManyWithoutProblemInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
-  nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
-  reps?: Prisma.IntFieldUpdateOperationsInput | number
   lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   state?: Prisma.IntFieldUpdateOperationsInput | number
-  lastReview?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -916,16 +916,16 @@ export type CurrentReviewUncheckedUpdateManyWithoutProblemInput = {
 export type CurrentReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   userId?: boolean
   problemNumber?: boolean
-  nextReviewAt?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  scheduledDays?: boolean
-  reps?: boolean
   lapses?: boolean
-  learningSteps?: boolean
-  state?: boolean
   lastReview?: boolean
+  learningSteps?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["currentReview"]>
@@ -933,16 +933,16 @@ export type CurrentReviewSelect<ExtArgs extends runtime.Types.Extensions.Interna
 export type CurrentReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   userId?: boolean
   problemNumber?: boolean
-  nextReviewAt?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  scheduledDays?: boolean
-  reps?: boolean
   lapses?: boolean
-  learningSteps?: boolean
-  state?: boolean
   lastReview?: boolean
+  learningSteps?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["currentReview"]>
@@ -950,16 +950,16 @@ export type CurrentReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types
 export type CurrentReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   userId?: boolean
   problemNumber?: boolean
-  nextReviewAt?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  scheduledDays?: boolean
-  reps?: boolean
   lapses?: boolean
-  learningSteps?: boolean
-  state?: boolean
   lastReview?: boolean
+  learningSteps?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["currentReview"]>
@@ -967,19 +967,19 @@ export type CurrentReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
 export type CurrentReviewSelectScalar = {
   userId?: boolean
   problemNumber?: boolean
-  nextReviewAt?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  scheduledDays?: boolean
-  reps?: boolean
   lapses?: boolean
-  learningSteps?: boolean
-  state?: boolean
   lastReview?: boolean
+  learningSteps?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
 }
 
-export type CurrentReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "problemNumber" | "nextReviewAt" | "stability" | "difficulty" | "elapsedDays" | "scheduledDays" | "reps" | "lapses" | "learningSteps" | "state" | "lastReview", ExtArgs["result"]["currentReview"]>
+export type CurrentReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "problemNumber" | "difficulty" | "due" | "elapsedDays" | "lapses" | "lastReview" | "learningSteps" | "reps" | "scheduledDays" | "stability" | "state", ExtArgs["result"]["currentReview"]>
 export type CurrentReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1002,16 +1002,16 @@ export type $CurrentReviewPayload<ExtArgs extends runtime.Types.Extensions.Inter
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     userId: number
     problemNumber: number
-    nextReviewAt: Date
-    stability: number
     difficulty: number
+    due: Date
     elapsedDays: number
-    scheduledDays: number
-    reps: number
     lapses: number
+    lastReview: Date | null
     learningSteps: number
+    reps: number
+    scheduledDays: number
+    stability: number
     state: number
-    lastReview: Date
   }, ExtArgs["result"]["currentReview"]>
   composites: {}
 }
@@ -1439,16 +1439,16 @@ export interface Prisma__CurrentReviewClient<T, Null = never, ExtArgs extends ru
 export interface CurrentReviewFieldRefs {
   readonly userId: Prisma.FieldRef<"CurrentReview", 'Int'>
   readonly problemNumber: Prisma.FieldRef<"CurrentReview", 'Int'>
-  readonly nextReviewAt: Prisma.FieldRef<"CurrentReview", 'DateTime'>
-  readonly stability: Prisma.FieldRef<"CurrentReview", 'Float'>
   readonly difficulty: Prisma.FieldRef<"CurrentReview", 'Float'>
+  readonly due: Prisma.FieldRef<"CurrentReview", 'DateTime'>
   readonly elapsedDays: Prisma.FieldRef<"CurrentReview", 'Int'>
-  readonly scheduledDays: Prisma.FieldRef<"CurrentReview", 'Int'>
-  readonly reps: Prisma.FieldRef<"CurrentReview", 'Int'>
   readonly lapses: Prisma.FieldRef<"CurrentReview", 'Int'>
-  readonly learningSteps: Prisma.FieldRef<"CurrentReview", 'Int'>
-  readonly state: Prisma.FieldRef<"CurrentReview", 'Int'>
   readonly lastReview: Prisma.FieldRef<"CurrentReview", 'DateTime'>
+  readonly learningSteps: Prisma.FieldRef<"CurrentReview", 'Int'>
+  readonly reps: Prisma.FieldRef<"CurrentReview", 'Int'>
+  readonly scheduledDays: Prisma.FieldRef<"CurrentReview", 'Int'>
+  readonly stability: Prisma.FieldRef<"CurrentReview", 'Float'>
+  readonly state: Prisma.FieldRef<"CurrentReview", 'Int'>
 }
     
 

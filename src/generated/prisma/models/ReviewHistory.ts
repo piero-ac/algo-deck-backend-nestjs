@@ -30,26 +30,28 @@ export type ReviewHistoryAvgAggregateOutputType = {
   id: number | null
   userId: number | null
   problemNumber: number | null
-  state: number | null
-  stability: number | null
   difficulty: number | null
   elapsedDays: number | null
-  lastElapsedDays: number | null
-  scheduledDays: number | null
+  lapses: number | null
   learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type ReviewHistorySumAggregateOutputType = {
   id: number | null
   userId: number | null
   problemNumber: number | null
-  state: number | null
-  stability: number | null
   difficulty: number | null
   elapsedDays: number | null
-  lastElapsedDays: number | null
-  scheduledDays: number | null
+  lapses: number | null
   learningSteps: number | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type ReviewHistoryMinAggregateOutputType = {
@@ -59,15 +61,16 @@ export type ReviewHistoryMinAggregateOutputType = {
   rating: $Enums.Rating | null
   reviewedAt: Date | null
   comments: string | null
-  state: number | null
-  due: Date | null
-  stability: number | null
   difficulty: number | null
+  due: Date | null
   elapsedDays: number | null
-  lastElapsedDays: number | null
-  scheduledDays: number | null
+  lapses: number | null
+  lastReview: Date | null
   learningSteps: number | null
-  review: Date | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type ReviewHistoryMaxAggregateOutputType = {
@@ -77,15 +80,16 @@ export type ReviewHistoryMaxAggregateOutputType = {
   rating: $Enums.Rating | null
   reviewedAt: Date | null
   comments: string | null
-  state: number | null
-  due: Date | null
-  stability: number | null
   difficulty: number | null
+  due: Date | null
   elapsedDays: number | null
-  lastElapsedDays: number | null
-  scheduledDays: number | null
+  lapses: number | null
+  lastReview: Date | null
   learningSteps: number | null
-  review: Date | null
+  reps: number | null
+  scheduledDays: number | null
+  stability: number | null
+  state: number | null
 }
 
 export type ReviewHistoryCountAggregateOutputType = {
@@ -95,15 +99,16 @@ export type ReviewHistoryCountAggregateOutputType = {
   rating: number
   reviewedAt: number
   comments: number
-  state: number
-  due: number
-  stability: number
   difficulty: number
+  due: number
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview: number
   learningSteps: number
-  review: number
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   _all: number
 }
 
@@ -112,26 +117,28 @@ export type ReviewHistoryAvgAggregateInputType = {
   id?: true
   userId?: true
   problemNumber?: true
-  state?: true
-  stability?: true
   difficulty?: true
   elapsedDays?: true
-  lastElapsedDays?: true
-  scheduledDays?: true
+  lapses?: true
   learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type ReviewHistorySumAggregateInputType = {
   id?: true
   userId?: true
   problemNumber?: true
-  state?: true
-  stability?: true
   difficulty?: true
   elapsedDays?: true
-  lastElapsedDays?: true
-  scheduledDays?: true
+  lapses?: true
   learningSteps?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type ReviewHistoryMinAggregateInputType = {
@@ -141,15 +148,16 @@ export type ReviewHistoryMinAggregateInputType = {
   rating?: true
   reviewedAt?: true
   comments?: true
-  state?: true
-  due?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  lastElapsedDays?: true
-  scheduledDays?: true
+  lapses?: true
+  lastReview?: true
   learningSteps?: true
-  review?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type ReviewHistoryMaxAggregateInputType = {
@@ -159,15 +167,16 @@ export type ReviewHistoryMaxAggregateInputType = {
   rating?: true
   reviewedAt?: true
   comments?: true
-  state?: true
-  due?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  lastElapsedDays?: true
-  scheduledDays?: true
+  lapses?: true
+  lastReview?: true
   learningSteps?: true
-  review?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
 }
 
 export type ReviewHistoryCountAggregateInputType = {
@@ -177,15 +186,16 @@ export type ReviewHistoryCountAggregateInputType = {
   rating?: true
   reviewedAt?: true
   comments?: true
-  state?: true
-  due?: true
-  stability?: true
   difficulty?: true
+  due?: true
   elapsedDays?: true
-  lastElapsedDays?: true
-  scheduledDays?: true
+  lapses?: true
+  lastReview?: true
   learningSteps?: true
-  review?: true
+  reps?: true
+  scheduledDays?: true
+  stability?: true
+  state?: true
   _all?: true
 }
 
@@ -282,15 +292,16 @@ export type ReviewHistoryGroupByOutputType = {
   rating: $Enums.Rating
   reviewedAt: Date
   comments: string | null
-  state: number
-  due: Date
-  stability: number
   difficulty: number
+  due: Date
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview: Date | null
   learningSteps: number
-  review: Date
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   _count: ReviewHistoryCountAggregateOutputType | null
   _avg: ReviewHistoryAvgAggregateOutputType | null
   _sum: ReviewHistorySumAggregateOutputType | null
@@ -323,15 +334,16 @@ export type ReviewHistoryWhereInput = {
   rating?: Prisma.EnumRatingFilter<"ReviewHistory"> | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   comments?: Prisma.StringNullableFilter<"ReviewHistory"> | string | null
-  state?: Prisma.IntFilter<"ReviewHistory"> | number
-  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
-  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
   difficulty?: Prisma.FloatFilter<"ReviewHistory"> | number
+  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   elapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  lastElapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  lapses?: Prisma.IntFilter<"ReviewHistory"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"ReviewHistory"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"ReviewHistory"> | number
-  review?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
+  reps?: Prisma.IntFilter<"ReviewHistory"> | number
+  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
+  state?: Prisma.IntFilter<"ReviewHistory"> | number
   problem?: Prisma.XOR<Prisma.ProblemScalarRelationFilter, Prisma.ProblemWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -343,15 +355,16 @@ export type ReviewHistoryOrderByWithRelationInput = {
   rating?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
   comments?: Prisma.SortOrderInput | Prisma.SortOrder
-  state?: Prisma.SortOrder
-  due?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrderInput | Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
-  review?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
   problem?: Prisma.ProblemOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -366,15 +379,16 @@ export type ReviewHistoryWhereUniqueInput = Prisma.AtLeast<{
   rating?: Prisma.EnumRatingFilter<"ReviewHistory"> | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   comments?: Prisma.StringNullableFilter<"ReviewHistory"> | string | null
-  state?: Prisma.IntFilter<"ReviewHistory"> | number
-  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
-  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
   difficulty?: Prisma.FloatFilter<"ReviewHistory"> | number
+  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   elapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  lastElapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  lapses?: Prisma.IntFilter<"ReviewHistory"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"ReviewHistory"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"ReviewHistory"> | number
-  review?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
+  reps?: Prisma.IntFilter<"ReviewHistory"> | number
+  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
+  state?: Prisma.IntFilter<"ReviewHistory"> | number
   problem?: Prisma.XOR<Prisma.ProblemScalarRelationFilter, Prisma.ProblemWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -386,15 +400,16 @@ export type ReviewHistoryOrderByWithAggregationInput = {
   rating?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
   comments?: Prisma.SortOrderInput | Prisma.SortOrder
-  state?: Prisma.SortOrder
-  due?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrderInput | Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
-  review?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
   _count?: Prisma.ReviewHistoryCountOrderByAggregateInput
   _avg?: Prisma.ReviewHistoryAvgOrderByAggregateInput
   _max?: Prisma.ReviewHistoryMaxOrderByAggregateInput
@@ -412,30 +427,32 @@ export type ReviewHistoryScalarWhereWithAggregatesInput = {
   rating?: Prisma.EnumRatingWithAggregatesFilter<"ReviewHistory"> | $Enums.Rating
   reviewedAt?: Prisma.DateTimeWithAggregatesFilter<"ReviewHistory"> | Date | string
   comments?: Prisma.StringNullableWithAggregatesFilter<"ReviewHistory"> | string | null
-  state?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
-  due?: Prisma.DateTimeWithAggregatesFilter<"ReviewHistory"> | Date | string
-  stability?: Prisma.FloatWithAggregatesFilter<"ReviewHistory"> | number
   difficulty?: Prisma.FloatWithAggregatesFilter<"ReviewHistory"> | number
+  due?: Prisma.DateTimeWithAggregatesFilter<"ReviewHistory"> | Date | string
   elapsedDays?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
-  lastElapsedDays?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
-  scheduledDays?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
+  lapses?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
+  lastReview?: Prisma.DateTimeNullableWithAggregatesFilter<"ReviewHistory"> | Date | string | null
   learningSteps?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
-  review?: Prisma.DateTimeWithAggregatesFilter<"ReviewHistory"> | Date | string
+  reps?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
+  scheduledDays?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
+  stability?: Prisma.FloatWithAggregatesFilter<"ReviewHistory"> | number
+  state?: Prisma.IntWithAggregatesFilter<"ReviewHistory"> | number
 }
 
 export type ReviewHistoryCreateInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   problem: Prisma.ProblemCreateNestedOneWithoutReviewHistoriesInput
   user: Prisma.UserCreateNestedOneWithoutReviewHistoriesInput
 }
@@ -447,30 +464,32 @@ export type ReviewHistoryUncheckedCreateInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryUpdateInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
   problem?: Prisma.ProblemUpdateOneRequiredWithoutReviewHistoriesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutReviewHistoriesNestedInput
 }
@@ -482,15 +501,16 @@ export type ReviewHistoryUncheckedUpdateInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryCreateManyInput = {
@@ -500,30 +520,32 @@ export type ReviewHistoryCreateManyInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryUpdateManyMutationInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryUncheckedUpdateManyInput = {
@@ -533,15 +555,16 @@ export type ReviewHistoryUncheckedUpdateManyInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryListRelationFilter = {
@@ -561,28 +584,30 @@ export type ReviewHistoryCountOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
   comments?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  due?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
-  review?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type ReviewHistoryAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type ReviewHistoryMaxOrderByAggregateInput = {
@@ -592,15 +617,16 @@ export type ReviewHistoryMaxOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
   comments?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  due?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
-  review?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type ReviewHistoryMinOrderByAggregateInput = {
@@ -610,28 +636,30 @@ export type ReviewHistoryMinOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   reviewedAt?: Prisma.SortOrder
   comments?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  due?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
+  due?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
+  lastReview?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
-  review?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type ReviewHistorySumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   problemNumber?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  stability?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   elapsedDays?: Prisma.SortOrder
-  lastElapsedDays?: Prisma.SortOrder
-  scheduledDays?: Prisma.SortOrder
+  lapses?: Prisma.SortOrder
   learningSteps?: Prisma.SortOrder
+  reps?: Prisma.SortOrder
+  scheduledDays?: Prisma.SortOrder
+  stability?: Prisma.SortOrder
+  state?: Prisma.SortOrder
 }
 
 export type ReviewHistoryCreateNestedManyWithoutUserInput = {
@@ -726,15 +754,16 @@ export type ReviewHistoryCreateWithoutUserInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   problem: Prisma.ProblemCreateNestedOneWithoutReviewHistoriesInput
 }
 
@@ -744,15 +773,16 @@ export type ReviewHistoryUncheckedCreateWithoutUserInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryCreateOrConnectWithoutUserInput = {
@@ -791,30 +821,32 @@ export type ReviewHistoryScalarWhereInput = {
   rating?: Prisma.EnumRatingFilter<"ReviewHistory"> | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   comments?: Prisma.StringNullableFilter<"ReviewHistory"> | string | null
-  state?: Prisma.IntFilter<"ReviewHistory"> | number
-  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
-  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
   difficulty?: Prisma.FloatFilter<"ReviewHistory"> | number
+  due?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
   elapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  lastElapsedDays?: Prisma.IntFilter<"ReviewHistory"> | number
-  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  lapses?: Prisma.IntFilter<"ReviewHistory"> | number
+  lastReview?: Prisma.DateTimeNullableFilter<"ReviewHistory"> | Date | string | null
   learningSteps?: Prisma.IntFilter<"ReviewHistory"> | number
-  review?: Prisma.DateTimeFilter<"ReviewHistory"> | Date | string
+  reps?: Prisma.IntFilter<"ReviewHistory"> | number
+  scheduledDays?: Prisma.IntFilter<"ReviewHistory"> | number
+  stability?: Prisma.FloatFilter<"ReviewHistory"> | number
+  state?: Prisma.IntFilter<"ReviewHistory"> | number
 }
 
 export type ReviewHistoryCreateWithoutProblemInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
   user: Prisma.UserCreateNestedOneWithoutReviewHistoriesInput
 }
 
@@ -824,15 +856,16 @@ export type ReviewHistoryUncheckedCreateWithoutProblemInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryCreateOrConnectWithoutProblemInput = {
@@ -867,30 +900,32 @@ export type ReviewHistoryCreateManyUserInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryUpdateWithoutUserInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
   problem?: Prisma.ProblemUpdateOneRequiredWithoutReviewHistoriesNestedInput
 }
 
@@ -900,15 +935,16 @@ export type ReviewHistoryUncheckedUpdateWithoutUserInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryUncheckedUpdateManyWithoutUserInput = {
@@ -917,15 +953,16 @@ export type ReviewHistoryUncheckedUpdateManyWithoutUserInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryCreateManyProblemInput = {
@@ -934,30 +971,32 @@ export type ReviewHistoryCreateManyProblemInput = {
   rating: $Enums.Rating
   reviewedAt: Date | string
   comments?: string | null
-  state: number
-  due: Date | string
-  stability: number
   difficulty: number
+  due: Date | string
   elapsedDays: number
-  lastElapsedDays: number
-  scheduledDays: number
+  lapses: number
+  lastReview?: Date | string | null
   learningSteps: number
-  review: Date | string
+  reps: number
+  scheduledDays: number
+  stability: number
+  state: number
 }
 
 export type ReviewHistoryUpdateWithoutProblemInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutReviewHistoriesNestedInput
 }
 
@@ -967,15 +1006,16 @@ export type ReviewHistoryUncheckedUpdateWithoutProblemInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ReviewHistoryUncheckedUpdateManyWithoutProblemInput = {
@@ -984,15 +1024,16 @@ export type ReviewHistoryUncheckedUpdateManyWithoutProblemInput = {
   rating?: Prisma.EnumRatingFieldUpdateOperationsInput | $Enums.Rating
   reviewedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  state?: Prisma.IntFieldUpdateOperationsInput | number
-  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  stability?: Prisma.FloatFieldUpdateOperationsInput | number
   difficulty?: Prisma.FloatFieldUpdateOperationsInput | number
+  due?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   elapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  lastElapsedDays?: Prisma.IntFieldUpdateOperationsInput | number
-  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  lapses?: Prisma.IntFieldUpdateOperationsInput | number
+  lastReview?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   learningSteps?: Prisma.IntFieldUpdateOperationsInput | number
-  review?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reps?: Prisma.IntFieldUpdateOperationsInput | number
+  scheduledDays?: Prisma.IntFieldUpdateOperationsInput | number
+  stability?: Prisma.FloatFieldUpdateOperationsInput | number
+  state?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1004,15 +1045,16 @@ export type ReviewHistorySelect<ExtArgs extends runtime.Types.Extensions.Interna
   rating?: boolean
   reviewedAt?: boolean
   comments?: boolean
-  state?: boolean
-  due?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  lastElapsedDays?: boolean
-  scheduledDays?: boolean
+  lapses?: boolean
+  lastReview?: boolean
   learningSteps?: boolean
-  review?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["reviewHistory"]>
@@ -1024,15 +1066,16 @@ export type ReviewHistorySelectCreateManyAndReturn<ExtArgs extends runtime.Types
   rating?: boolean
   reviewedAt?: boolean
   comments?: boolean
-  state?: boolean
-  due?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  lastElapsedDays?: boolean
-  scheduledDays?: boolean
+  lapses?: boolean
+  lastReview?: boolean
   learningSteps?: boolean
-  review?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["reviewHistory"]>
@@ -1044,15 +1087,16 @@ export type ReviewHistorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   rating?: boolean
   reviewedAt?: boolean
   comments?: boolean
-  state?: boolean
-  due?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  lastElapsedDays?: boolean
-  scheduledDays?: boolean
+  lapses?: boolean
+  lastReview?: boolean
   learningSteps?: boolean
-  review?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["reviewHistory"]>
@@ -1064,18 +1108,19 @@ export type ReviewHistorySelectScalar = {
   rating?: boolean
   reviewedAt?: boolean
   comments?: boolean
-  state?: boolean
-  due?: boolean
-  stability?: boolean
   difficulty?: boolean
+  due?: boolean
   elapsedDays?: boolean
-  lastElapsedDays?: boolean
-  scheduledDays?: boolean
+  lapses?: boolean
+  lastReview?: boolean
   learningSteps?: boolean
-  review?: boolean
+  reps?: boolean
+  scheduledDays?: boolean
+  stability?: boolean
+  state?: boolean
 }
 
-export type ReviewHistoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "problemNumber" | "rating" | "reviewedAt" | "comments" | "state" | "due" | "stability" | "difficulty" | "elapsedDays" | "lastElapsedDays" | "scheduledDays" | "learningSteps" | "review", ExtArgs["result"]["reviewHistory"]>
+export type ReviewHistoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "problemNumber" | "rating" | "reviewedAt" | "comments" | "difficulty" | "due" | "elapsedDays" | "lapses" | "lastReview" | "learningSteps" | "reps" | "scheduledDays" | "stability" | "state", ExtArgs["result"]["reviewHistory"]>
 export type ReviewHistoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   problem?: boolean | Prisma.ProblemDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1102,15 +1147,16 @@ export type $ReviewHistoryPayload<ExtArgs extends runtime.Types.Extensions.Inter
     rating: $Enums.Rating
     reviewedAt: Date
     comments: string | null
-    state: number
-    due: Date
-    stability: number
     difficulty: number
+    due: Date
     elapsedDays: number
-    lastElapsedDays: number
-    scheduledDays: number
+    lapses: number
+    lastReview: Date | null
     learningSteps: number
-    review: Date
+    reps: number
+    scheduledDays: number
+    stability: number
+    state: number
   }, ExtArgs["result"]["reviewHistory"]>
   composites: {}
 }
@@ -1542,15 +1588,16 @@ export interface ReviewHistoryFieldRefs {
   readonly rating: Prisma.FieldRef<"ReviewHistory", 'Rating'>
   readonly reviewedAt: Prisma.FieldRef<"ReviewHistory", 'DateTime'>
   readonly comments: Prisma.FieldRef<"ReviewHistory", 'String'>
-  readonly state: Prisma.FieldRef<"ReviewHistory", 'Int'>
-  readonly due: Prisma.FieldRef<"ReviewHistory", 'DateTime'>
-  readonly stability: Prisma.FieldRef<"ReviewHistory", 'Float'>
   readonly difficulty: Prisma.FieldRef<"ReviewHistory", 'Float'>
+  readonly due: Prisma.FieldRef<"ReviewHistory", 'DateTime'>
   readonly elapsedDays: Prisma.FieldRef<"ReviewHistory", 'Int'>
-  readonly lastElapsedDays: Prisma.FieldRef<"ReviewHistory", 'Int'>
-  readonly scheduledDays: Prisma.FieldRef<"ReviewHistory", 'Int'>
+  readonly lapses: Prisma.FieldRef<"ReviewHistory", 'Int'>
+  readonly lastReview: Prisma.FieldRef<"ReviewHistory", 'DateTime'>
   readonly learningSteps: Prisma.FieldRef<"ReviewHistory", 'Int'>
-  readonly review: Prisma.FieldRef<"ReviewHistory", 'DateTime'>
+  readonly reps: Prisma.FieldRef<"ReviewHistory", 'Int'>
+  readonly scheduledDays: Prisma.FieldRef<"ReviewHistory", 'Int'>
+  readonly stability: Prisma.FieldRef<"ReviewHistory", 'Float'>
+  readonly state: Prisma.FieldRef<"ReviewHistory", 'Int'>
 }
     
 

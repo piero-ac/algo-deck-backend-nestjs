@@ -76,7 +76,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  clerkUserId: 'clerkUserId',
+  createdAt: 'createdAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -99,16 +101,16 @@ export type ProblemScalarFieldEnum = (typeof ProblemScalarFieldEnum)[keyof typeo
 export const CurrentReviewScalarFieldEnum = {
   userId: 'userId',
   problemNumber: 'problemNumber',
-  nextReviewAt: 'nextReviewAt',
-  stability: 'stability',
   difficulty: 'difficulty',
+  due: 'due',
   elapsedDays: 'elapsedDays',
-  scheduledDays: 'scheduledDays',
-  reps: 'reps',
   lapses: 'lapses',
+  lastReview: 'lastReview',
   learningSteps: 'learningSteps',
-  state: 'state',
-  lastReview: 'lastReview'
+  reps: 'reps',
+  scheduledDays: 'scheduledDays',
+  stability: 'stability',
+  state: 'state'
 } as const
 
 export type CurrentReviewScalarFieldEnum = (typeof CurrentReviewScalarFieldEnum)[keyof typeof CurrentReviewScalarFieldEnum]
@@ -121,15 +123,16 @@ export const ReviewHistoryScalarFieldEnum = {
   rating: 'rating',
   reviewedAt: 'reviewedAt',
   comments: 'comments',
-  state: 'state',
-  due: 'due',
-  stability: 'stability',
   difficulty: 'difficulty',
+  due: 'due',
   elapsedDays: 'elapsedDays',
-  lastElapsedDays: 'lastElapsedDays',
-  scheduledDays: 'scheduledDays',
+  lapses: 'lapses',
+  lastReview: 'lastReview',
   learningSteps: 'learningSteps',
-  review: 'review'
+  reps: 'reps',
+  scheduledDays: 'scheduledDays',
+  stability: 'stability',
+  state: 'state'
 } as const
 
 export type ReviewHistoryScalarFieldEnum = (typeof ReviewHistoryScalarFieldEnum)[keyof typeof ReviewHistoryScalarFieldEnum]
