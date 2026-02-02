@@ -11,7 +11,7 @@ import { FsrsService } from './fsrs/fsrs.service';
 import { ReviewStatsService } from './reviews/review-stats.service';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot({ isGlobal: true })],
   controllers: [AppController, ProblemsController, ReviewsController],
   providers: [
     AppService,
