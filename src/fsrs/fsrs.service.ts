@@ -26,7 +26,7 @@ export class FsrsService {
 
   rowToCard(data: ReviewCardDto): Card {
     return {
-      due: data.nextReviewAt,
+      due: data.due,
       stability: data.stability,
       difficulty: data.difficulty,
       elapsed_days: data.elapsedDays,
@@ -75,6 +75,7 @@ export class FsrsService {
   }
   // Convert Card to Row Data for
   cardToRowForReviewHistory(
+    card: Card,
     log: ReviewLog,
     userId: number,
     problemNumber: number,
@@ -87,13 +88,14 @@ export class FsrsService {
       stability: log.stability,
       difficulty: log.difficulty,
       elapsedDays: log.elapsed_days,
-      lastElapsedDays: log.last_elapsed_days,
       scheduledDays: log.scheduled_days,
       learningSteps: log.learning_steps,
-      review: log.review,
       problemNumber,
       reviewedAt: log.review,
+      lapses: card.lapses,
+      reps: card.reps,
       comments: '',
+      lastReview: card.last_review ?? new Date(),
     };
   }
 
