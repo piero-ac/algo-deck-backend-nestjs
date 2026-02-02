@@ -16,7 +16,7 @@ export class ReviewsService {
     const { userId } = params;
     return this.prisma.currentReview.count({
       where: {
-        nextReviewAt: {
+        due: {
           lte: new Date(),
         },
         userId: userId,
@@ -28,13 +28,13 @@ export class ReviewsService {
     const { userId } = params;
     return this.prisma.currentReview.findMany({
       where: {
-        nextReviewAt: {
+        due: {
           lte: new Date(),
         },
         userId: userId,
       },
       orderBy: {
-        nextReviewAt: 'asc',
+        due: 'asc',
       },
       select: {
         userId: true,
@@ -57,7 +57,7 @@ export class ReviewsService {
         userId: userId,
       },
       select: {
-        nextReviewAt: true,
+        due: true,
       },
     });
   }
@@ -77,7 +77,7 @@ export class ReviewsService {
     }
 
     const now = new Date();
-    if (result && result.nextReviewAt > now) {
+    if (result && result.due > now) {
       throw new ConflictException('REVIEW_NOT_DUE');
     }
 
@@ -89,7 +89,6 @@ export class ReviewsService {
         },
         select: {
           problemNumber: true,
-          nextReviewAt: true,
           stability: true,
           difficulty: true,
           elapsedDays: true,
@@ -99,6 +98,7 @@ export class ReviewsService {
           learningSteps: true,
           state: true,
           lastReview: true,
+          due: true,
         },
       });
 
@@ -118,6 +118,7 @@ export class ReviewsService {
       );
 
       const reviewHistoryCard = this.fsrs.cardToRowForReviewHistory(
+        reviewedCard.card,
         reviewedCard.log,
         userId,
         problemNumber,
