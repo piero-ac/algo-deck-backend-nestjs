@@ -1,6 +1,5 @@
 export class ReviewCardDto {
   problemNumber: number;
-  nextReviewAt: Date;
   stability: number;
   difficulty: number;
   elapsedDays: number;
@@ -9,5 +8,6 @@ export class ReviewCardDto {
   lapses: number;
   learningSteps: number;
   state: number;
-  lastReview: Date;
+  lastReview?: Date | null;
+  due: Date;
 }

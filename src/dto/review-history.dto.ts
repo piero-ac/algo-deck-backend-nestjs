@@ -10,9 +10,10 @@ export class ReviewHistoryDto {
   stability: number;
   difficulty: number;
   elapsedDays: number;
-  lastElapsedDays: number;
   scheduledDays: number;
   learningSteps: number;
   due: Date;
-  review: Date;
+  lapses: number;
+  lastReview: Date | null;
+  reps: number;
 }
