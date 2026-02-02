@@ -61,16 +61,16 @@ export class FsrsService {
     return {
       userId,
       problemNumber,
-      learningSteps: card.learning_steps,
-      nextReviewAt: card.due,
       stability: card.stability,
       difficulty: card.difficulty,
       elapsedDays: card.elapsed_days,
       scheduledDays: card.scheduled_days,
       reps: card.reps,
       lapses: card.lapses,
+      learningSteps: card.learning_steps,
       state: card.state,
       lastReview: card.last_review ?? new Date(),
+      due: card.due,
     };
   }
   // Convert Card to Row Data for
@@ -102,31 +102,31 @@ export class FsrsService {
     return createEmptyCard(new Date());
   }
 
-  mapPrismaRatingToFsrs(rating: PrismaRating): FsrsRating {
-    switch (rating) {
-      case PrismaRating.ONE:
-        return FsrsRating.Again;
-      case PrismaRating.TWO:
-        return FsrsRating.Hard;
-      case PrismaRating.THREE:
-        return FsrsRating.Good;
-      case PrismaRating.FOUR:
-        return FsrsRating.Easy;
-      default:
-        return FsrsRating.Again;
-    }
-  }
+  // mapPrismaRatingToFsrs(rating: PrismaRating): FsrsRating {
+  //   switch (rating) {
+  //     case PrismaRating.ONE:
+  //       return FsrsRating.Again;
+  //     case PrismaRating.TWO:
+  //       return FsrsRating.Hard;
+  //     case PrismaRating.THREE:
+  //       return FsrsRating.Good;
+  //     case PrismaRating.FOUR:
+  //       return FsrsRating.Easy;
+  //     default:
+  //       return FsrsRating.Again;
+  //   }
+  // }
 
   fsrsRatingToPrisma(rating: FsrsRating): PrismaRating {
     switch (rating) {
       case FsrsRating.Again:
-        return PrismaRating.ONE;
+        return PrismaRating.AGAIN;
       case FsrsRating.Hard:
-        return PrismaRating.TWO;
+        return PrismaRating.HARD;
       case FsrsRating.Good:
-        return PrismaRating.THREE;
+        return PrismaRating.GOOD;
       case FsrsRating.Easy:
-        return PrismaRating.FOUR;
+        return PrismaRating.EASY;
       default:
         throw new Error(`Unsupported FSRS rating: ${rating}`);
     }

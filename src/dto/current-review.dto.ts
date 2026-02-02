@@ -1,7 +1,6 @@
 export class CurrentReviewDto {
   userId: number;
   problemNumber: number;
-  nextReviewAt: Date;
   stability: number;
   difficulty: number;
   elapsedDays: number;
@@ -11,4 +10,5 @@ export class CurrentReviewDto {
   learningSteps: number;
   state: number;
   lastReview: Date;
+  due: Date;
 }
