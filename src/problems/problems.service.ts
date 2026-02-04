@@ -68,6 +68,7 @@ export class ProblemsService {
 
   async problemHistoryByNumber(params: {
     key: number;
+    userId: number;
   }): Promise<ReviewHistoryResponseDto[]> {
     const { key } = params;
 

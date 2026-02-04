@@ -12,6 +12,7 @@ import { ReviewHistoryResponseDto } from '../dto/review-history-response.dto';
 import { SearchProblemsResponseDto } from 'src/dto/search-problems-response.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { User } from 'src/generated/prisma/client';
+import { type RequestWithUser } from 'src/auth/auth.guard';
 
 @Controller('problems')
 @UseGuards(AuthGuard)
@@ -21,7 +22,7 @@ export class ProblemsController {
   @Get()
   async getProblemsList(
     @Query() query: SearchProblemsDto,
-    @Request() request,
+    @Request() request: RequestWithUser,
   ): Promise<SearchProblemsResponseDto> {
     const { search, page, limit } = query;
     const skip = (page - 1) * limit;
@@ -44,19 +45,24 @@ export class ProblemsController {
     };
   }
 
-  @Get('history/all/:userId')
+  @Get('history/all')
   async getProblemHistory(
     @Param('userId') userId: string,
+    @Request() request: RequestWithUser,
   ): Promise<ReviewHistoryResponseDto[]> {
-    return this.problemsService.getProblemHistoryAll(Number(userId));
+    const authenticatedUser = request.user as User;
+    return this.problemsService.getProblemHistoryAll(authenticatedUser.id);
   }
 
   @Get('history/:key')
   async getProblemHistoryByNumber(
     @Param('key') key: string,
+    @Request() request: RequestWithUser,
   ): Promise<ReviewHistoryResponseDto[]> {
+    const authenticatedUser = request.user as User;
     return this.problemsService.problemHistoryByNumber({
       key: Number(key),
+      userId: authenticatedUser.id,
     });
   }
 }
