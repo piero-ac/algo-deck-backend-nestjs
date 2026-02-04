@@ -4,7 +4,7 @@ import {
   ExecutionContext,
   UnauthorizedException,
 } from '@nestjs/common';
-import { clerkClient } from '@clerk/clerk-sdk-node';
+import { createClerkClient, verifyToken } from '@clerk/backend';
 import { UsersService } from 'src/users/users.service';
 import { ConfigService } from '@nestjs/config';
 import { User } from 'src/generated/prisma/client';
@@ -21,31 +21,29 @@ export class AuthGuard implements CanActivate {
   ) {} // Inject your service
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest<RequestWithUser>();
+    const clerkClient = createClerkClient({
+      secretKey: process.env.CLERK_SECRET_KEY,
+      publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+    });
 
-    // Get token from header
-    const authHeader = request.headers['authorization'] as string | undefined;
-    const token = authHeader?.replace('Bearer ', '');
+    const req = context.switchToHttp().getRequest<RequestWithUser>();
+    const token = req.headers['authorization'].split(' ')[1];
 
     if (!token) {
-      throw new UnauthorizedException('No token');
+      throw new UnauthorizedException('No token provided');
     }
 
     try {
-      // Verify token with Clerk
-      const verified = await clerkClient.verifyToken(token, {
-        secretKey: process.env.CLERK_SECRET_KEY as string,
-        issuer: `https://${process.env.CLERK_DOMAIN}`,
+      const tokenPayload = await verifyToken(token, {
+        secretKey: this.configService.get('CLERK_SECRET_KEY'),
       });
 
-      // Get user from Clerk
-      const clerkUser = await clerkClient.users.getUser(verified.sub);
-      // Safely extract user data
-      const clerkUserId = clerkUser.id;
-      const firstName = clerkUser.firstName ?? '';
-      const lastName = clerkUser.lastName ?? '';
+      const user = await clerkClient.users.getUser(tokenPayload.sub);
+      const clerkUserId = user.id;
+      const firstName = user.firstName ?? '';
+      const lastName = user.lastName ?? '';
       const fullName = `${firstName} ${lastName}`.trim();
-      const email = clerkUser.emailAddresses[0]?.emailAddress;
+      const email = user.emailAddresses[0]?.emailAddress;
       // TODO: Save to your DB if doesn't exist
 
       const dbUser = await this.userService.findOrCreate({
@@ -55,7 +53,7 @@ export class AuthGuard implements CanActivate {
       });
 
       // Attach user to request
-      request.user = dbUser;
+      req.user = dbUser;
 
       return true;
     } catch (error: unknown) {
