@@ -1,25 +1,38 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { ProblemsService } from './problems.service';
 import { SearchProblemsDto } from '../dto/search-problems.dto';
 import { ReviewHistoryResponseDto } from '../dto/review-history-response.dto';
 import { SearchProblemsResponseDto } from 'src/dto/search-problems-response.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { User } from 'src/generated/prisma/client';
 
 @Controller('problems')
+@UseGuards(AuthGuard)
 export class ProblemsController {
   constructor(private readonly problemsService: ProblemsService) {}
 
   @Get()
   async getProblemsList(
     @Query() query: SearchProblemsDto,
+    @Request() request,
   ): Promise<SearchProblemsResponseDto> {
-    const { search, page, limit, userId } = query;
+    const { search, page, limit } = query;
     const skip = (page - 1) * limit;
+
+    const authenticatedUser = request.user as User;
 
     const { problems, total } = await this.problemsService.problemsBySearch({
       search,
       skip,
       take: limit,
-      userId,
+      userId: authenticatedUser.id,
     });
 
     return {

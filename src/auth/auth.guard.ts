@@ -8,7 +8,8 @@ import { clerkClient } from '@clerk/clerk-sdk-node';
 import { UsersService } from 'src/users/users.service';
 import { ConfigService } from '@nestjs/config';
 import { User } from 'src/generated/prisma/client';
-interface RequestWithUser extends Request {
+
+export interface RequestWithUser extends Request {
   user?: User;
 }
 

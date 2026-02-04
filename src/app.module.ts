@@ -9,6 +9,7 @@ import { ReviewsController } from './reviews/reviews.controller';
 import { ReviewsService } from './reviews/reviews.service';
 import { FsrsService } from './fsrs/fsrs.service';
 import { ReviewStatsService } from './reviews/review-stats.service';
+import { UsersService } from './users/users.service';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true })],
@@ -20,6 +21,7 @@ import { ReviewStatsService } from './reviews/review-stats.service';
     ReviewsService,
     FsrsService,
     ReviewStatsService,
+    UsersService,
   ],
 })
 export class AppModule {}
