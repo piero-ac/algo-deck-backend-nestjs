@@ -41,17 +41,18 @@ export class ReviewsController {
   async submitReview(
     @Body()
     reviewData: {
-      userId: string;
       problemNumber: string;
       rating: string;
     },
+    @Request() request: RequestWithUser,
   ) {
-    const { userId, problemNumber, rating } = reviewData;
+    const { problemNumber, rating } = reviewData;
+    const authenticatedUser = request.user as User;
 
     const cardData = this.reviewsService.submitReview({
-      userId: Number(userId),
+      userId: authenticatedUser.id,
       problemNumber: Number(problemNumber),
-      rating: Number(rating),
+      rating: rating,
     });
 
     return cardData;

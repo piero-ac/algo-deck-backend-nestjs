@@ -63,12 +63,12 @@ export class ReviewsService {
   async submitReview(params: {
     userId: number;
     problemNumber: number;
-    rating: number;
+    rating: string;
   }) {
     const { userId, problemNumber, rating } = params;
     const result = await this.getReviewDueDate({ userId, problemNumber });
 
-    const mappedRating = this.fsrs.mapNumberToFsrs(rating);
+    const mappedRating = this.fsrs.mapStringToFsrs(rating);
 
     if (mappedRating === FsrsRating.Manual) {
       throw new BadRequestException('INVALID_RATING');
@@ -107,7 +107,7 @@ export class ReviewsService {
         card = this.fsrs.rowToCard(reviewData);
       }
 
-      const reviewedCard = this.fsrs.schedule(card, rating);
+      const reviewedCard = this.fsrs.schedule(card, mappedRating);
 
       const currentReviewsCard = this.fsrs.cardToRowForCurrentReviews(
         reviewedCard.card,
