@@ -147,4 +147,19 @@ export class FsrsService {
         return FsrsRating.Manual; // use Manual to Determine error
     }
   }
+
+  mapStringToFsrs(rating: string): FsrsRating {
+    switch (rating) {
+      case 'AGAIN':
+        return FsrsRating.Again;
+      case 'HARD':
+        return FsrsRating.Hard;
+      case 'GOOD':
+        return FsrsRating.Good;
+      case 'EASY':
+        return FsrsRating.Easy;
+      default:
+        return FsrsRating.Manual; // use Manual to Determine error
+    }
+  }
 }
