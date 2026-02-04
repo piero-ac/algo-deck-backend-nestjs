@@ -12,8 +12,7 @@ export class ReviewsService {
     private fsrs: FsrsService,
   ) {}
 
-  async getReviewsDueCount(params: { userId: number }): Promise<number> {
-    const { userId } = params;
+  async getReviewsDueCount(userId: number): Promise<number> {
     return this.prisma.currentReview.count({
       where: {
         due: {
@@ -24,8 +23,7 @@ export class ReviewsService {
     });
   }
 
-  async getReviewsDue(params: { userId: number }): Promise<ReviewsDueDto[]> {
-    const { userId } = params;
+  async getReviewsDue(userId: number): Promise<ReviewsDueDto[]> {
     return this.prisma.currentReview.findMany({
       where: {
         due: {

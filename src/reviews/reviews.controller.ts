@@ -1,33 +1,40 @@
-import { Body, Controller, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Get, Put, UseGuards, Request } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { ReviewStatsService } from './review-stats.service';
 import { ReviewsDueDto } from 'src/dto/reviews-due.dto';
 import { UserProgressDto } from 'src/dto/user-progress.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { User } from 'src/generated/prisma/client';
+import { type RequestWithUser } from 'src/auth/auth.guard';
 
 @Controller('reviews')
+@UseGuards(AuthGuard)
 export class ReviewsController {
   constructor(
     private readonly reviewsService: ReviewsService,
     private readonly reviewStatsService: ReviewStatsService,
   ) {}
 
-  @Get('progress/:userId')
+  @Get('progress')
   async getUserProgress(
-    @Param('userId') userId: string,
+    @Request() request: RequestWithUser,
   ): Promise<UserProgressDto> {
-    return this.reviewStatsService.getUserProgress(Number(userId));
+    const authenticatedUser = request.user as User;
+    return this.reviewStatsService.getUserProgress(authenticatedUser.id);
   }
 
-  @Get('due/:userId')
+  @Get('due')
   async getDueReviews(
-    @Param('userId') userId: string,
+    @Request() request: RequestWithUser,
   ): Promise<ReviewsDueDto[]> {
-    return this.reviewsService.getReviewsDue({ userId: Number(userId) });
+    const authenticatedUser = request.user as User;
+    return this.reviewsService.getReviewsDue(authenticatedUser.id);
   }
 
-  @Get('count/:userId')
-  async getReviewCount(@Param('userId') userId: string): Promise<number> {
-    return this.reviewsService.getReviewsDueCount({ userId: Number(userId) });
+  @Get('count')
+  async getReviewCount(@Request() request: RequestWithUser): Promise<number> {
+    const authenticatedUser = request.user as User;
+    return this.reviewsService.getReviewsDueCount(authenticatedUser.id);
   }
 
   @Put('submit-review')
