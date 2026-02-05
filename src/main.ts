@@ -1,11 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { frontendSecretOnly } from './middleware/frontendRestriction.middleware';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors();
+  app.use(frontendSecretOnly);
 
   app.useGlobalPipes(
     new ValidationPipe({
